@@ -1,8 +1,5 @@
-use crate::try_gread_vec_with;
-use scroll::{ctx, Pread};
-
-// TODO: Writing arrays
-// TODO: Implement more types
+use crate::{try_gread_vec_with, try_gwrite_vec_with};
+use scroll::{ctx, Pread, Pwrite};
 
 /// Binary representation of an Unreal Engine 5 TArray
 #[derive(Debug, Clone, PartialEq)]
@@ -31,5 +28,21 @@ where
         let data: Vec<T> = try_gread_vec_with!(from, offset, len as usize, ctx);
 
         Ok((TArray { len, data }, *offset))
+    }
+}
+
+impl<'a, T: 'a> ctx::TryIntoCtx<scroll::Endian> for TArray<T>
+where
+    T: ctx::TryIntoCtx<scroll::Endian, Error = crate::Error>,
+{
+    type Error = crate::Error;
+
+    fn try_into_ctx(self, dst: &mut [u8], ctx: scroll::Endian) -> Result<usize, Self::Error> {
+        let offset = &mut 0;
+
+        dst.gwrite_with(self.len, offset, ctx)?;
+        try_gwrite_vec_with!(dst, offset, self.data, ctx);
+
+        Ok(*offset)
     }
 }
