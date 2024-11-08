@@ -15,6 +15,7 @@ impl<T> From<TArray<T>> for Vec<T> {
     }
 }
 
+#[allow(clippy::needless_lifetimes)] // Not needless.
 impl<'a, T: 'a> ctx::TryFromCtx<'a, scroll::Endian> for TArray<T>
 where
     T: ctx::TryFromCtx<'a, scroll::Endian, Error = crate::Error>,
@@ -31,6 +32,7 @@ where
     }
 }
 
+#[allow(clippy::extra_unused_lifetimes, clippy::needless_lifetimes)] // Not an extra unused lifetime.
 impl<'a, T: 'a> ctx::TryIntoCtx<scroll::Endian> for TArray<T>
 where
     T: ctx::TryIntoCtx<scroll::Endian, Error = crate::Error>,

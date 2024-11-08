@@ -1,5 +1,5 @@
-use scroll::{ctx, Pread};
 use satisfactory_common::types::{FString, TArray, Vector3};
+use scroll::{ctx, Pread};
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]

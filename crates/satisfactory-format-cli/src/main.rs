@@ -1,6 +1,6 @@
 use std::io::Read;
 
-use satisfactory_blueprints::{config::BlueprintConfigFile, blueprint::BlueprintFileHeader};
+use satisfactory_blueprints::{blueprint::BlueprintFileHeader, config::BlueprintConfigFile};
 use scroll::Pread;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {

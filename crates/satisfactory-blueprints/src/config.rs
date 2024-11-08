@@ -48,7 +48,7 @@ impl<'a> ctx::TryFromCtx<'a, scroll::Endian> for BlueprintConfigFile<'a> {
     }
 }
 
-impl<'a> ctx::TryIntoCtx<scroll::Endian> for BlueprintConfigFile<'a> {
+impl ctx::TryIntoCtx<scroll::Endian> for BlueprintConfigFile<'_> {
     type Error = satisfactory_common::Error;
 
     fn try_into_ctx(self, this: &mut [u8], ctx: scroll::Endian) -> Result<usize, Self::Error> {

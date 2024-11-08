@@ -26,14 +26,13 @@ impl<'a> ctx::TryFromCtx<'a, scroll::Endian> for FString<'a> {
         //       and I do not want that and scroll does not implement `TryFromCtx` for `&'a [u16]`.
 
         let data: &[u8] = src.gread_with(offset, (size - 1) as usize)?;
-        let data =
-            str::from_utf8(data).map_err(crate::Error::InvalidUTF8)?;
+        let data = str::from_utf8(data).map_err(crate::Error::InvalidUTF8)?;
 
         Ok((FString { size, data }, *offset + 1))
     }
 }
 
-impl<'a> ctx::TryIntoCtx<scroll::Endian> for FString<'a> {
+impl ctx::TryIntoCtx<scroll::Endian> for FString<'_> {
     type Error = scroll::Error;
 
     fn try_into_ctx(self, dst: &mut [u8], ctx: scroll::Endian) -> Result<usize, Self::Error> {
