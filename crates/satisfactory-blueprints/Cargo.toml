@@ -1,0 +1,13 @@
+[package]
+name = "satisfactory-blueprints"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+scroll.workspace = true
+satisfactory-common.workspace = true
+serde = { version = "1.0.214", features = ["derive"], optional = true }
+
+[features]
+default = []
+serde = ["dep:serde"]

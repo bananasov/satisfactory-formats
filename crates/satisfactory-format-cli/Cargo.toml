@@ -1,0 +1,11 @@
+[package]
+name = "satisfactory-format-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# clap = { version = "4.5.20", features = ["derive"] }
+scroll.workspace = true
+satisfactory-common.workspace = true
+satisfactory-blueprints.workspace = true
+satisfactory-saves.workspace = true

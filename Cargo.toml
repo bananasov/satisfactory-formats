@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/satisfactory-blueprints",
+    "crates/satisfactory-common", "crates/satisfactory-format-cli",
+    "crates/satisfactory-saves"
+]
+
+[workspace.dependencies]
+satisfactory-common = { path = "./crates/satisfactory-common" }
+satisfactory-blueprints = { path = "./crates/satisfactory-blueprints" }
+satisfactory-saves = { path = "./crates/satisfactory-saves" }
+scroll = { version = "0.12.0", features = ["derive"] }

@@ -1,0 +1,14 @@
+[package]
+name = "satisfactory-common"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.214", features = ["derive"], optional = true }
+scroll.workspace = true
+thiserror = "2.0.1"
+
+[features]
+default = []
+serde = ["dep:serde"]
+
